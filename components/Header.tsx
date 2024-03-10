@@ -1,14 +1,10 @@
-'use client'
-import {SignInButton, SignedOut, UserButton, useUser} from '@clerk/nextjs'
+import {SignInButton, SignedOut, UserButton} from '@clerk/nextjs'
 import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../public/box.svg'
 import { ThemeToggler } from './ui/ThemeToggler'
 
 const Header = () => {
-
-  const {user} = useUser()
-
   return (
     <header className='flex items-center justify-between sm:mb-[2rem] mb-4'>
         <Link href={'/'} className='flex items-center space-x-1'>
@@ -21,9 +17,6 @@ const Header = () => {
 
         <div className='px-5 flex space-x-2 items-center'>
           {/* Theme & sign-in */}
-          {user && (
-            <span className='font-mono'>Welcome, {user?.firstName ? user.firstName : 'user'} </span>
-          )}
           <ThemeToggler />
           <UserButton afterSignOutUrl='/' />
           <SignedOut>
